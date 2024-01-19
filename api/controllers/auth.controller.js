@@ -31,7 +31,7 @@ export const signin = async(req, res, next) => {
         res
         .cookie('access_token', token, {httpOnly: true, expires: expiryDate})
         .status(200)
-        .json(rest)
+        .json(rest) //it's not safe to return password as response to user to only return rest
         //httpOnly is used so prevent third party applications to modify cookie
     }catch(error){
         next(error);

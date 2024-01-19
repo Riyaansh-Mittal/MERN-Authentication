@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 // import axios from 'axios'
 
 const SignUp = () => {
   const [formData, setformData] = useState({})
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setformData({...formData, [e.target.id]: e.target.value});
   }
@@ -33,7 +34,9 @@ const SignUp = () => {
     setLoading(false);
     if(data.success === false){
       setError(true);
+      return;
     }
+    navigate('/sign-in')
     }
     catch{
       setLoading(false);
@@ -42,7 +45,7 @@ const SignUp = () => {
   }
   return (
     <div className='p-3 max-w-lg mx-auto'>
-      <h1 className='text-3xl text-center font-semibold my-7'>SignUp</h1>
+      <h1 className='text-3xl text-center font-semibold my-7'>Sign Up</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input type='text' placeholder='Username' 
         id='username' className='bg-slate-100 p-3 rounded-t-lg'
