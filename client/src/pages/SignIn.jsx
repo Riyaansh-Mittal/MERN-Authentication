@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 // import axios from 'axios'
-import {signInStart, signInSuccess, signInFailure} from '../redux/user/userSlice';
+import {signInStart, signInSuccess, signInFailure, resetError} from '../redux/user/userSlice';
 import {useDispatch, useSelector } from 'react-redux';
+import OAuth from '../components/OAuth';
+import { useEffect } from 'react';
 
 const SignIn = () => {
   const [formData, setformData] = useState({})
@@ -11,6 +13,9 @@ const SignIn = () => {
   const {loading, error} = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(resetError());
+  }, [dispatch]);
   const handleChange = (e) => {
     setformData({...formData, [e.target.id]: e.target.value});
   }
@@ -66,6 +71,7 @@ const SignIn = () => {
         disabled:opacity-80'>
           {loading ? 'Loading...' : 'Sign In'}
         </button>
+        <OAuth />
       </form>
       <div className='flex gap-2 mt-5'>
         <p>Dont have an account?</p>

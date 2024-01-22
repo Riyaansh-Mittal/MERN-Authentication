@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
+    },
+    profilePicture:{
+        type: String,
+        default: "https://www.seekpng.com/png/full/966-9665493_my-profile-icon-blank-profile-image-circle.png",
     }
 }, {timestamps: true});
 
