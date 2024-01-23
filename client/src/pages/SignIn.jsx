@@ -47,6 +47,7 @@ const SignIn = () => {
       return;
     }   
     // setLoading(false);
+    console.log(data);
     dispatch(signInSuccess(data));
     navigate('/');
     }

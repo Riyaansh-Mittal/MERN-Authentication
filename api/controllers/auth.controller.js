@@ -51,9 +51,9 @@ export const google = async(req, res, next)=>{
             .status(200)
             .json(rest);
         }else{
-            console.log('1234');
             const generatedPassword = Math.random().toString(36)
             .slice(-8) + Math.random().toString(36).slice(-8);
+            console.log(generatedPassword);
             const hashedPassword = bcryptjs.hashSync(generatedPassword, 10);
             const newUser = new User({
                 username: 

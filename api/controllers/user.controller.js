@@ -11,7 +11,10 @@ export const test = (req, res) => {
 //update user
 
 export const updateUser = async(req, res, next) => {
+    //65aa496340a94bbbec33115c
     if(req.user.id !== req.params.id){
+        // res.json(req.user.id);
+        
         // return res.status(401).json("You can update only your account");
         return next(errorHandler(401, 'You can update only your account'));
     }
@@ -28,7 +31,7 @@ export const updateUser = async(req, res, next) => {
                     email: req.body.email,
                     password: req.body.password,
                     profilePicture: req.body.profilePicture,
-                }
+                },
                 // there is a chance that user may send data of the admin and become the admin
                 // so only let her give information above not whole $set.
                 // for example, admin: true might be sent by a user to become admin.
@@ -42,7 +45,7 @@ export const updateUser = async(req, res, next) => {
     } catch(error){
         next(error);
     }
-}
+};
 
 
 
