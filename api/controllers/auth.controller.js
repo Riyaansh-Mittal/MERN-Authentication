@@ -34,7 +34,8 @@ export const signin = async(req, res, next) => {
         .json(rest) //it's not safe to return password as response to user to only return rest
         //httpOnly is used so prevent third party applications to modify cookie
     }catch(error){
-        next(error);
+        next(error)
+        ;
     }
 }
 
