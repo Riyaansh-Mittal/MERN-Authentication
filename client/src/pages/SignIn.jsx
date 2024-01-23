@@ -13,9 +13,6 @@ const SignIn = () => {
   const {loading, error} = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(resetError());
-  }, [dispatch]);
   const handleChange = (e) => {
     setformData({...formData, [e.target.id]: e.target.value});
   }
